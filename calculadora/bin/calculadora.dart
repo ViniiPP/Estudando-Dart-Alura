@@ -8,12 +8,11 @@ void main() {
     print("3 - Multiplicação");
     print("4 - Divisão");
     print("5 - Sair");
-  }
-  menu();
-  
-  int escolha = int.parse(stdin.readLineSync()!);
-  double numeroUm = double.parse(stdin.readLineSync()!);
-  double numeroDois = double.parse(stdin.readLineSync()!);
+  } menu();
+
+  int escolha = 0;
+  double numeroUm = 0;
+  double numeroDois = 0;
 
   void soma() {
     print(numeroUm + numeroDois);
@@ -31,23 +30,47 @@ void main() {
     print(numeroUm / numeroDois);
   }
 
-  switch (escolha) {
-    case 1:
-      soma();
-      break;
-    case 2:
-      subtracao();
-      break;
-    case 3:
-      multiplicacao();
-      break;
-    case 4:
-      divisao();
-      break;
-    case 5:
-      print("Saindo...");
-      break;
-    default:
-      print("Opção inválida");
+    void calcular (escolha) {
+    switch (escolha) {
+      case 1:
+        soma();
+        break;
+      case 2:
+        subtracao();
+        break;
+      case 3:
+        multiplicacao();
+        break;
+      case 4:
+        divisao();
+        break;
+      case 5:
+        print("Saindo...");
+        break;
+      default:
+        print("Opção inválida");
+    }
   }
+
+  String? entrada = stdin.readLineSync();
+  if (entrada != null) {
+    if (entrada != "") {
+      escolha = int.parse(entrada);
+    }
+  }
+
+  entrada = stdin.readLineSync();
+  if (entrada != null) {
+    if (entrada != "") {
+      numeroUm = double.parse(entrada);
+    }
+  }
+
+  entrada = stdin.readLineSync();
+  if (entrada != null) {
+    if (entrada != "") {
+      numeroDois = double.parse(entrada);
+    }
+  }
+  calcular(escolha);
 }
